@@ -139,9 +139,12 @@ for il in range(base_attrb['num_levels']):
 
             # Cleanining 
             # del  comp_grid
-        offsets.extend([len(fdset)])
+        offsets.extend([len(fc)])
+        
 
     offsets = np.array(offsets)
+    offsets = np.cumsum(offsets)
+    print(f"level_{il}  offsets: ", offsets)
     lev.create_dataset("data:offsets=0", data=offsets)
 
 h5file.close()
